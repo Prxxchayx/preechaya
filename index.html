@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Anniversary</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffd1dc, #ffe4e1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+    .card {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      animation: fade 1s;
+    }
+    .card.active { display: flex; }
+    img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    p {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 30px;
+      max-width: 90%;
+    }
+    button {
+      background: #ff69b4;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ff85c1;
+    }
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    audio {
+      position: fixed;
+      bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- เพลง -->
+  <audio controls autoplay loop>
+    <source src="music.mp3" type="audio/mp3" />
+    Your browser does not support audio.
+  </audio>
+
+  <!-- การ์ด 5 ใบ -->
+  <div class="card active">
+    <img src="1.jpg" alt="memory 1" />
+    <p>รู้ไหม... วันที่เราเจอกันครั้งแรก มันเป็นวันที่เปลี่ยนชีวิตเราไปเลย</p>
+    <button onclick="nextCard()">ถัดไป</button>
+  </div>
+  <div class="card">
+    <img src="2.jpg" alt="memory 2" />
+    <p>ขอบคุณที่เข้ามาเป็นโลกทั้งใบของเค้า</p>
+    <button onclick="nextCard()">ถัดไป</button>
+  </div>
+  <div class="card">
+    <img src="3.jpg" alt="memory 3" />
+    <p>ขอบคุณที่ยังอยู่ข้างกัน ไม่ว่าเค้าจะดื้อแค่ไหน ขอบคุณสำหรับทุกอย่างนะคะ</p>
+    <button onclick="nextCard()">ถัดไป</button>
+  </div>
+  <div class="card">
+    <img src="4.jpg" alt="memory 4" />
+    <p>เค้าจะอยู่ข้างๆเทออย่างงี้ตลอดไปเหมือนกันนะ</p>
+    <button onclick="nextCard()">ถัดไป</button>
+  </div>
+  <div class="card">
+    <img src="6.jpg" alt="memory 5" />
+    <p>สุขสันต์วันครบรอบนะคนเก่งของเรา รักเธอมากที่สุดในโลกเลย ❤️</p>
+    <button onclick="replay()">ดูอีกครั้ง</button>
+  </div>
+
+  <script>
+    let index = 0;
+    const cards = document.querySelectorAll('.card');
+
+    function nextCard() {
+      cards[index].classList.remove('active');
+      index++;
+      if (index < cards.length) {
+        cards[index].classList.add('active');
+      }
+    }
+
+    function replay() {
+      cards[index].classList.remove('active');
+      index = 0;
+      cards[index].classList.add('active');
+    }
+  </script>
+</body>
+</html>
